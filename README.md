@@ -68,8 +68,8 @@ Things you may want to cover:
 
 |    Column     |   Type   |   Option   |
 |  -----------  | -------- |  --------  |
-|    user_id    |references| null:false |
-|    item_id    |references| null:false |
+|     user      |references| foreign_key: true |
+|     item      |references| null:false |
 
 ### Association
  - belong_to :users
@@ -78,13 +78,14 @@ Things you may want to cover:
 
 |    Column     |   Type   |     Option   |
 |   ---------   |  ------  |  ----------  |
-|   item_name   |  string  |  null:false  |
-|   category    |  string  |  null:false  |
+|      name     |  string  |  null:false  |
+|   category    |  integer |  null:false  |
 |     price     |  integer |  null:false  |
 |   condition   |  integer |  null:false  |
 | delivery_fee  |  integer |  null:false  |
 |    area       |  integer |  null:false  |
 |date_of_shipment| integer |  null:false  |
+|   user_id     |references|  foreign_key: true|
 
 ### Association
 
