@@ -36,7 +36,7 @@ Things you may want to cover:
 | first_name |  string  |  null:false |
 | family_name_kana| string| null:false|
 | first_name_kana | string| null:false|
-|  birthday  | string   | null:false  |
+|    date    | string   | null:false  |
 |   email    |  string  |  null:false |
 |   password |  string  |  null:false |
 
@@ -55,31 +55,31 @@ Things you may want to cover:
 |  zip_code  |  string  | null:false |
 | prefecture |  string  | null:false |
 |    city    |  string  | null:false |
-|  address1  |  string  | null:false |
-|  address2  |  string  | null:false |
+|address_line|  string  | null:false |
 |  telephone |  string  | null:false |
 
 ### Association
 
-- belong_to :users
-
+- belongs_to :user
+- has_many :wallet
 
 ## walletsテーブル
 
 |    Column     |   Type   |   Option   |
 |  -----------  | -------- |  --------  |
-|     user      |references| foreign_key: true |
-|     item      |references| null:false |
+|     wallet    |references| null:false,foreign_key: true |
+|     item      |references| null:false,foreign_key: true |
 
 ### Association
- - belong_to :users
+- belongs_to :user
+- has_many :item
 
 ## itemsテーブル
 
 |    Column     |   Type   |     Option   |
 |   ---------   |  ------  |  ----------  |
 |      name     |  string  |  null:false  |
-|   category    |  integer |  null:false  |
+|   category_id |  integer |  null:false  |
 |     price     |  integer |  null:false  |
 |   condition   |  integer |  null:false  |
 | delivery_fee  |  integer |  null:false  |
@@ -89,4 +89,5 @@ Things you may want to cover:
 
 ### Association
 
-- belong_to :users
+- belongs_to :user
+- belongs_to :item
