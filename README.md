@@ -55,6 +55,7 @@ Things you may want to cover:
 |prefecture_id|  integer  | null:false |
 |    city    |  string  | null:false |
 |address_line|  string  | null:false |
+|Building_name| string  |            |
 |  telephone |  string  | null:false |
 
 ### Association
@@ -65,8 +66,8 @@ Things you may want to cover:
 
 |    Column     |   Type   |   Option   |
 |  -----------  | -------- |  --------  |
-|     wallet    |references| null:false,foreign_key: true |
-|     item_id   |references| null:false,foreign_key: true |
+|     user      |references| null:false,foreign_key: true |
+|     item      |references| null:false,foreign_key: true |
 
 ### Association
 - belongs_to :user
