@@ -64,6 +64,11 @@ describe Item do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number")
     end
+    it '商品の価格が下限(300)未満だと出品できない' do
+      @item.price = '200'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+    end
     it '販売価格は半角英数のみ入力すること' do
       @item.price = '００００００'
       @item.valid?
