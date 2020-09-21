@@ -7,7 +7,13 @@ describe Item do
   end
 
   describe '商品出品機能' do
-    context '新規登録がうまくいかないとき'
+    context '商品出品がうまくいくとき' do
+      it '全て正常な値が入力されている' do
+        expect(@item).to be_valid
+      end
+    end
+
+    context '商品出品がうまくいかないとき'
     it '画像が一枚でもなと出品できない' do
       @item.image = nil
       @item.valid?
@@ -44,7 +50,7 @@ describe Item do
       expect(@item.errors.full_messages).to include("Area can't be blank", "Area is not a number")
     end
     it '発送までの日数について情報がないと出品できない' do
-      @item.date_of_shipment = nil
+      @item.date_of_shipment_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Date of shipment can't be blank", "Date of shipment is not a number")
     end
@@ -62,6 +68,31 @@ describe Item do
       @item.price = '００００００'
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is not a number')
+    end
+    it 'カテゴリーが1の場合出品できない' do
+      @item.category_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be other than 1")
+    end
+    it '商品の状態が1の場合出品できない' do
+      @item.condition_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Condition must be other than 1")
+    end
+    it '配送料の負担についての情報が1の場合出品できない' do
+      @item.delivery_fee_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
+    end
+    it '発送元地域の情報が1の場合出品できない' do
+      @item.area_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Area must be other than 1")
+    end
+    it '発送までの日数が1の場合出品できない' do
+      @item.date_of_shipment_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Date of shipment must be other than 1')
     end
   end
 end
