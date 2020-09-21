@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
 
   def crate
     @item = Item.new(item_params)
+    @item = Item.new(image_params)
     @item.save
   end
 
@@ -27,7 +28,7 @@ private
   def image_params
     params.require(:item).permit(:image).merge(user_id: current_user.id)
   end
-  
+
   # def set_item
   #   @item = Item.find(params[:id])
   # end

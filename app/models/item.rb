@@ -1,8 +1,9 @@
 class Item < ApplicationRecord
-  has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+
+
+  has_one_attached :image
+  belongs_to :user
 
   validates :image, presence:true
   validates :name, presence: true
@@ -15,12 +16,12 @@ class Item < ApplicationRecord
   validates :price, presence: true, numericality: {greater_than_or_equal_to: 300},format: { with:/\A[0-9]+\z/}
 
 
-  belongs_to_active_hash :genre
-  validates :genre_id, numericality: { other_than: 1}
+  belongs_to_active_hash :category
+  validates :category_id, numericality: { other_than: 1}
   belongs_to_active_hash :condition
   validates :condition_id, numericality: { other_than: 1}
   belongs_to_active_hash :deliveryFee
-  validates :Delivery_Fee_id, numericality: { other_than: 1}
+  validates :delivery_fee_id, numericality: { other_than: 1}
   belongs_to_active_hash :area
   validates :area_id, numericality: { other_than: 1}
   belongs_to_active_hash :date_of_shipment

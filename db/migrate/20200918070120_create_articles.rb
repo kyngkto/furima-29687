@@ -1,7 +1,7 @@
 class CreateArticles < ActiveRecord::Migration[6.0]
   def change
     create_table :articles do |t|
-      t.integer    :genre_id     , null: false
+      t.integer    :_id     , null: false
       t.integer    :condition_id , null: false
       t.integer    :delivery_Fee_id ,null: false
       t.integer    :area_id , null: false
