@@ -2,13 +2,13 @@ require 'rails_helper'
 
 describe Item do
   before do
-    @item  = FactoryBot.build(:item)
+    @item = FactoryBot.build(:item)
   end
 
   describe '商品出品機能' do
     context '新規登録がうまくいかないとき'
-    it '画像が一枚でもないと出品できない' do
-      @item.imag = ''
+    it '画像が一枚でもなと出品できない' do
+      @item.image = ''
       @item.valid?
       expect(@item.error.full_message).to include("Image can't be blank")
     end
@@ -62,6 +62,5 @@ describe Item do
       @item.valid?
       expect(@item.error.full_message).to include('Price Half-width number')
     end
-    it
-    end
+  end
 end

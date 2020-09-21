@@ -24,6 +24,10 @@ private
     params.require(:item).permit(:image, :name, :price).merge(user_id: current_user.id)
   end
 
+  def image_params
+    params.require(:item).permit(:image).merge(user_id: current_user.id)
+  end
+  
   # def set_item
   #   @item = Item.find(params[:id])
   # end
