@@ -23,7 +23,7 @@ class Item < ApplicationRecord
   validates :category_id, numericality: { other_than: 1}
   belongs_to_active_hash :condition
   validates :condition_id, numericality: { other_than: 1}
-  belongs_to_active_hash :deliveryFee
+  belongs_to_active_hash :delivery_fee
   validates :delivery_fee_id, numericality: { other_than: 1}
   belongs_to_active_hash :area
   validates :area_id, numericality: { other_than: 1}
