@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_064727) do
     t.integer "delivery_fee_id"
     t.integer "area_id"
     t.integer "date_of_shipment_id"
-    t.integer "info"
+    t.text "info"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
