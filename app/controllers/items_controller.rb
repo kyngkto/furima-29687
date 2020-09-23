@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: :edit
+  #before_action :set_item, only: :edit
   before_action :move_to_index, except: [:index, :show]
   def index
     @items = Item.all.order('created_at DESC')
@@ -24,8 +24,18 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    if @item.save
+      redirect_to show
+    else
+      render :new
+    end
+  end
 
 private
 
