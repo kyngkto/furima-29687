@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_one :deliver_adress
 
   validates :nickname, presence: true
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])[a-z\d]+\z/
