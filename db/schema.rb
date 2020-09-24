@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2020_09_23_054738) do
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "price", null: false
+    t.integer "number"
+    t.integer "exp_month"
+    t.integer "exp_year"
+    t.integer "cvc"
+    t.string "postal_code"
+    t.integer "area_id"
+    t.string "city"
+    t.string "house_number"
+    t.string "building_name"
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
