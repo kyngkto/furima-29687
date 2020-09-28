@@ -43,26 +43,26 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :wallets
+- has_many :orders
 
 
 ## deliver_addressesテーブル
 
 |   column   |   Type   |   Option   |
 |  --------  |  ------  |  --------  |
-|  wallet    |references| null:false,foreign_key: true |
-|  zip_code  |  string  | null:false |
-|prefecture_id|  integer  | null:false |
+|  order    |references| null:false,foreign_key: true |
+|  postal_code  |  string  | null:false |
+|   area_id|  integer  | null:false |
 |    city    |  string  | null:false |
-|address_line|  string  | null:false |
+|house_number |  string  | null:false |
 |Building_name| string  |            |
 |  telephone |  string  | null:false |
 
 ### Association
 
-- has_one :wallet
+- has_one :order
 
-## walletsテーブル
+## ordersテーブル
 
 |    Column     |   Type   |   Option   |
 |  -----------  | -------- |  --------  |
