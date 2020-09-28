@@ -16,7 +16,7 @@ describe UserOrders do
     it 'tokenが存在しないと購入できない' do
       @user_orders.token = nil
       @user_orders.valid?
-      expect(@user_orders.errors.full_messages).to include("")
+      expect(@user_orders.errors.full_messages).to include("Token can't be blank")
     end
     it 'postal_codeが空だと購入できない' do
       @user_orders.postal_code = ""
@@ -26,7 +26,7 @@ describe UserOrders do
     it 'ハイフンが含まれないと購入できない' do
       @user_orders.postal_code = "1234567"
       @user_orders.valid?
-      expect(@user_orders.errors.full_messages).to include("")
+      expect(@user_orders.errors.full_messages).to include("Postal code is invalid")
     end
     it 'area_idが空だと購入できない' do
       @user_orders.area_id = nil
@@ -56,7 +56,7 @@ describe UserOrders do
     it '11桁以上だと購入できない' do
       @user_orders.phone_number = "111111111111"
       @user_orders.valid?
-      expect(@user_orders.errors.full_messages).to include("")
+      expect(@user_orders.errors.full_messages).to include("Phone number is invalid")
     end
   end
 end
