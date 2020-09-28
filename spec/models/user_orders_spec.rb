@@ -13,30 +13,20 @@ describe UserOrders do
     end
 
     context '商品購入がうまくいかない時'
-    it 'numberが空だと購入できない' do
-      @user_orders.number = ''
+    it 'tokenが存在しないと購入できない' do
+      @user_orders.token = nil
       @user_orders.valid?
-      expect(@user_orders.errors.full_messages).to include()
-    end
-    it 'exp_monthが空だと購入できない' do
-      @user_orders.exp_month = ''
-      @user_orders.valid?
-      expect(@user_orders.errors.full_messages).to include()
-    end
-    it 'exp_yearが空だと購入できない' do
-      @user_orders.exp_year = ''
-      @user_orders.valid?
-      expect(@user_orders.errors.full_messages).to include()
-    end
-    it 'cvcが空だと購入できない' do
-      @user_orders.cvc = ''
-      @user_orders.valid?
-      expect(@user_orders.errors.full_messages).to include()
+      expect(@user_orders.errors.full_messages).to include("")
     end
     it 'postal_codeが空だと購入できない' do
       @user_orders.postal_code = ""
       @user_orders.valid?
       expect(@user_orders.errors.full_messages).to include("Postal code can't be blank")
+    end
+    it 'ハイフンが含まれないと購入できない' do
+      @user_orders.postal_code = "1234567"
+      @user_orders.valid?
+      expect(@user_orders.errors.full_messages).to include("")
     end
     it 'area_idが空だと購入できない' do
       @user_orders.area_id = nil
@@ -62,6 +52,11 @@ describe UserOrders do
       @user_orders.phone_number = ""
       @user_orders.valid?
       expect(@user_orders.errors.full_messages).to include("Phone number is invalid")
+    end
+    it '11桁以上だと購入できない' do
+      @user_orders.phone_number = "111111111111"
+      @user_orders.valid?
+      expect(@user_orders.errors.full_messages).to include("")
     end
   end
 end

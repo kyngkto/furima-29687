@@ -7,10 +7,7 @@ FactoryBot.define do
     city                  {"大阪市"}
     house_number          {"青山1-11"}
     phone_number          { "09012345678" }
-    number                { 1111111111 }
-    exp_month             { 3 }
-    exp_year              { 23 }
-    cvc                   { 123 }
+    token                 { 'tok_hoge12345' }
 
   end
 end
