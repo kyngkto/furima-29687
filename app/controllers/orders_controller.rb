@@ -2,6 +2,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
   def index
+    if @item.order
+      redirect_to root_path
+    else
+      render "index"
+    end
     @orders = UserOrders.new
   end
 
